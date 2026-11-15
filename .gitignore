@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 scripts/trabajo_evaluador/
 scripts/resultados_unificados/
+frontend/node_modules/
