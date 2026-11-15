@@ -1,0 +1,10 @@
+{
+  "mars_glaciers": [
+    { "id": "m1", "name": "Arcadia Planitia Base", "lat": 42.0, "lon": -160.0 },
+    { "id": "m2", "name": "Deuteronilus Mensae", "lat": 43.5, "lon": 22.0 }
+  ],
+  "earth_analogs": {
+    "m1": { "name": "Glaciar Morenas Coloradas", "lat": -32.96, "lon": -69.34, "basin": "Mendoza" },
+    "m2": { "name": "Glaciar Dos Lenguas", "lat": -30.25, "lon": -69.79, "basin": "San Juan" }
+  }
+}
