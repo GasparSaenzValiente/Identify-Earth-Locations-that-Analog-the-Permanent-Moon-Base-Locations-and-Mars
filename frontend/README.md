@@ -63,7 +63,7 @@ match = 100 · Σ wₖ·simₖ / Σ wₖ                       E1 (z₀, T) w=2 
 
 This is a **relative** match (the pipeline's `relativo_comunes` criterion). 100 % means "as close to Mars
 as the closest 5 % of the Andean inventory on every parameter", not "equal to Mars". The HUD therefore labels
-it *REL. MATCH*. The Earth values are the pipeline's climate-cell values, shared by every glacier in the same
+it *REL %* (relative match). The Earth values are the pipeline's climate-cell values, shared by every glacier in the same
 cell.
 
 **Site-adjusted Mars profile** (`lib/marsEnvironment.js`). The pipeline compares every glacier with one Mars

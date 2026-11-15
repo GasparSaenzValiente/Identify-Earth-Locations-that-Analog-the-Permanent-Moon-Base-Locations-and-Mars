@@ -47,7 +47,7 @@ function MatchTab({ cmp, siteCmp, refCmp, data, glacier }) {
           <span className="font-display text-[22px] font-bold leading-none tabular-nums text-[#fff4e0]">
             <CountUp key={glacier.id} value={cmp.score} duration={900} format={(v) => v.toFixed(1)} />
           </span>
-          <span className="font-display text-[8px] font-bold tracking-[0.12em] text-amber">{cmp === refCmp ? 'REF · REL %' : 'REL. MATCH'}</span>
+          <span className="font-display text-[8.5px] font-bold tracking-[0.18em] text-amber">{cmp === refCmp ? 'REF %' : 'REL %'}</span>
         </HudRing>
         <div className="min-w-0 flex-1 space-y-1.5 font-mono text-[10.5px] text-white/85">
           <div className="grid grid-cols-[4.6rem_1fr_auto] items-center gap-2">

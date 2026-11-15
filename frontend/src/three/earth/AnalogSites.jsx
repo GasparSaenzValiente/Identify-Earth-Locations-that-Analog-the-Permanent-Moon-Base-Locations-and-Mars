@@ -107,7 +107,7 @@ function AnalogCallout({ analog, rank, score }) {
  * In-scene tag: the best ice bodies for this Mars site (ranked) and the team's field benchmarks
  * (Morenas Coloradas, Dos Lenguas) with their rank, so the contrast is explicit.
  */
-function GlacierTag({ glacier, rank, score, best }) {
+function GlacierTag({ glacier, tag, score, best }) {
   const group = useRef()
   const label = useRef()
   const position = useMemo(() => latLonToVector3(glacier.lat, glacier.lon, EARTH_RADIUS * 1.002).toArray(), [glacier])
@@ -117,7 +117,7 @@ function GlacierTag({ glacier, rank, score, best }) {
       <Html position={[0, 0, 0]} zIndexRange={[20, 0]} style={{ pointerEvents: 'none' }} center>
         <div ref={label} className={`ref-label ${best ? 'ref-label--best' : ''}`} aria-hidden="true">
           <span className="ref-label__diamond" />
-          <span className="font-mono">#{rank.toLocaleString('en-US')}</span>
+          <span className="font-mono">{tag}</span>
           {glacier.benchmark ? glacier.benchmark.name : glacier.name}
           <span className="font-mono text-white/80">{pct(score)}</span>
         </div>
@@ -144,14 +144,16 @@ export default function AnalogSites() {
       {onEarth && scoring && <AnalogCallout analog={analog} rank={scoring.rank[match.analogIndex] + 1} score={scoring.score[match.analogIndex]} />}
       {onEarth &&
         scoring &&
+        // "TOP n" = position in the panel's "Best ices for Mars" list; "#n" = rank among all 7,719
         top
+          .map((e, k) => ({ ...e, k }))
           .filter((e) => !tagged.has(e.index) && tagged.add(e.index))
-          .map((e) => <GlacierTag key={`top-${e.index}`} glacier={e.glacier} rank={e.rank} score={e.score} best />)}
+          .map((e) => <GlacierTag key={`top-${e.index}`} glacier={e.glacier} tag={`TOP ${e.k + 1}`} score={e.score} best />)}
       {onEarth &&
         scoring &&
         data?.benchmarks
           .filter((i) => !tagged.has(i))
-          .map((i) => <GlacierTag key={`bm-${i}`} glacier={data.glaciers[i]} rank={scoring.rank[i] + 1} score={scoring.score[i]} />)}
+          .map((i) => <GlacierTag key={`bm-${i}`} glacier={data.glaciers[i]} tag={`#${(scoring.rank[i] + 1).toLocaleString('en-US')}`} score={scoring.score[i]} />)}
     </>
   )
 }
