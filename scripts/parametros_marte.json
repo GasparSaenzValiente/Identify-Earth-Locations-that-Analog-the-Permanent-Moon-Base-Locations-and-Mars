@@ -1,0 +1,139 @@
+{
+  "fases": [
+    {
+      "id": "E1",
+      "nombre": "Perforación",
+      "parametros": [
+        {
+          "parametro": "Rugosidad superficial z₀",
+          "valor": "0,0044 m (fijo en el modelo)",
+          "fuente": "MCD v6.2"
+        },
+        {
+          "parametro": "Temperatura superficial",
+          "valor": "202 K (−71 °C) media anual. Rango 160–273 K. Por estación: 175 K en el invierno norte, 225 K en el verano",
+          "fuente": "MCD v6.2"
+        }
+      ]
+    },
+    {
+      "id": "E2",
+      "nombre": "Fusión y formación de la cavidad",
+      "parametros": [
+        {
+          "parametro": "Conductividad térmica (cuerpo de hielo)",
+          "valor": "~2,6–2,8 W/m·K",
+          "fuente": "Hielo: k ≈ 567/T (Klinger 1981)",
+          "_comentario": "--> k_cuerpo"
+        },
+        {
+          "parametro": "Conductividad térmica (regolito superficial)",
+          "valor": "0,04–0,09 W/m·K",
+          "fuente": "Phoenix e InSight",
+          "_comentario": "--> k_cobertura"
+        },
+        {
+          "parametro": "Temperatura del hielo",
+          "valor": "≈ 202 K (−71 °C)",
+          "fuente": "MCD v6.2, media anual de superficie",
+          "_comentario": "--> t_hielo"
+        },
+        {
+          "parametro": "Fracción de sólidos",
+          "valor": "< 20% (más de 80% de hielo)",
+          "fuente": "Petersen et al. 2018",
+          "_comentario": "--> detritos_v"
+        },
+        {
+          "parametro": "Inercia térmica (GCM)",
+          "valor": "195 J m⁻² K⁻¹ s⁻½ (fijo en el modelo)",
+          "fuente": "MCD v6.2",
+          "_comentario": "--> inercia_cobertura"
+        }
+      ],
+      "notas": [
+        "Se separó la conductividad térmica en dos parámetros (hielo y regolito) para asignar correctamente las variables k_cuerpo y k_cobertura.",
+        "Conductividad: la relación k₀ = 567/T es la que se usa habitualmente para la conductividad del hielo masivo a una temperatura dada.",
+        "Temperatura: por debajo de unos pocos metros, la oscilación anual se amortigua y la temperatura del suelo tiende a la media anual de superficie.",
+        "Sólidos: el relevamiento regional con SHARAD encontró que los LDA están compuestos de un material con ε′ = 3 y tanδ ≈ 0,002 < 0,005, o sea consistentemente más de 80% de hielo."
+      ]
+    },
+    {
+      "id": "E3",
+      "nombre": "Bombeo y presurización",
+      "parametros": [
+        {
+          "parametro": "Presión litostática (a 10 m)",
+          "valor": "Depende de la densidad de sobrecarga y gravedad marciana",
+          "fuente": "Derivado del perfil estratigráfico",
+          "_comentario": "--> sobrecarga"
+        },
+        {
+          "parametro": "Presión superficial / operativa",
+          "valor": "753 Pa media anual (rango 649–845)",
+          "fuente": "MCD v6.2",
+          "_comentario": "--> p_operacion"
+        },
+        {
+          "parametro": "Densidad del aire",
+          "valor": "0,021 kg/m³ media anual (rango 0,016–0,027)",
+          "fuente": "MCD v6.2"
+        },
+        {
+          "parametro": "Densidad del cuerpo de hielo",
+          "valor": "1.220 kg/m³ (>80% hielo de ~920 kg/m³ + detritos basálticos)",
+          "fuente": "Estimación con la fracción de sólidos de Petersen 2018",
+          "_comentario": "--> rho_cuerpo"
+        },
+        {
+          "parametro": "Densidad de la cobertura (regolito)",
+          "valor": "~ 1.500 kg/m³ (típico para polvo/basalto poroso marciano superficial)",
+          "fuente": "Estimación estándar de literatura (Phoenix/InSight)",
+          "_comentario": "--> rho_cobertura"
+        }
+      ],
+      "notas": [
+        "Se añadieron explícitamente las filas para sobrecarga y rho_cobertura para alojar las variables solicitadas.",
+        "La presión media está apenas por encima del punto triple del agua (611 Pa). Para E3, la densidad que importa es la del hielo y la sobrecarga."
+      ]
+    },
+    {
+      "id": "E4",
+      "nombre": "Extracción y refinamiento",
+      "parametros": [
+        {
+          "parametro": "Punto de congelación",
+          "valor": "206 K (−67 °C) para una salmuera eutéctica de perclorato de Mg",
+          "fuente": "Chevrier et al. 2009",
+          "_comentario": "--> t_congelacion"
+        },
+        {
+          "parametro": "Percloratos",
+          "valor": "0,4–0,6 wt% (medido en Phoenix, 68° N)",
+          "fuente": "Hecht et al. 2009; Catling et al. 2010",
+          "_comentario": "--> perclorato"
+        },
+        {
+          "parametro": "Viento horizontal",
+          "valor": "6,7 m/s media anual (rango 3,9–9,3)",
+          "fuente": "MCD v6.2"
+        },
+        {
+          "parametro": "Flujo solar en superficie horizontal",
+          "valor": "~104 W/m² media diaria aproximada; máximo 459 W/m² a mediodía de verano",
+          "fuente": "MCD v6.2"
+        }
+      ],
+      "notas": [
+        "Punto de congelación: Chevrier et al. determinaron valores eutécticos teóricos de 236 ± 1 K para perclorato de sodio al 52 wt% y 206 ± 1 K para perclorato de magnesio al 44,0 wt%.",
+        "Percloratos: las mediciones del WCL de Phoenix implican un rango de ~0,5–0,6 wt% de ClO₄⁻. Asumir el mismo valor en Deuteronilus supone que el perclorato está distribuido globalmente."
+      ]
+    }
+  ],
+  "precisiones_sobre_el_metodo": [
+    "Las medias anuales salen de 4 estaciones (Ls 0, 90, 180 y 270) × 4 horas (0, 6, 12 y 18 h).",
+    "El flujo solar es el más sensible al muestreo: 3 de las 4 horas caen cerca del amanecer, el atardecer o la noche.",
+    "Rugosidad e inercia térmica son campos fijos del modelo (no cambian con la estación) y salen de mapas orbitales.",
+    "La MCD está disponible gratis en su sitio web. Para citarla: Millour et al., 'The Mars Climate Database (version 6.1)', EPSC 2022."
+  ]
+}

@@ -25,3 +25,16 @@ npm run dev        # http://localhost:5173
 ```
 
 The method, data pipeline, architecture and credits are documented in [frontend/README.md](frontend/README.md).
+
+
+## Scientific processing scripts
+
+The `scripts/` directory contains the Python pipeline used to retrieve
+Earth environmental data and rank candidate Mars analog sites.
+It runs separately from the frontend.
+
+Inputs include glacier coordinates, a uniform sampling grid over the
+Andes, and documented Martian reference parameters.
+
+See [scripts/README.md](scripts/README.md) for dependencies, execution
+instructions, data sources, and methodological limitations.
