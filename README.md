@@ -38,3 +38,8 @@ Andes, and documented Martian reference parameters.
 
 See [scripts/README.md](scripts/README.md) for dependencies, execution
 instructions, data sources, and methodological limitations.
+
+## Project report and presentation
+
+- [Project report — informe_hackaton_2026.pdf](informe_hackaton_2026.pdf): the project report included in this repository.
+- [Project presentation video](https://drive.google.com/file/d/18lDI5TWsSbAdJ-xCKdTOVrWvt4uRCZNm/view?usp=drivesdk): watch the project presentation on Google Drive.
